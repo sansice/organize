@@ -18,5 +18,5 @@ def index_post():
     word_cloud = WordClouds()
     cloud = word_cloud.show_wordcloud(processed_text)
     # template = render_template("index.html", input=processed_text)
-    # print(template)
+    # print(template) # TODO- Need to be fixed
     return cloud
