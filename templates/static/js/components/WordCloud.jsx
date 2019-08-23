@@ -8,7 +8,7 @@ class WordCloud extends Component {
         var output_text_json = JSON.parse(output_text);
         console.log("Greetings from wordCloud " + output_text_json)
         return(
-            <div style={{backgroundColor: 'white'}}>
+            <div style={{height: 500, width: 800}}>
               <ReactWordcloud words={output_text_json} />
             </div>
        )

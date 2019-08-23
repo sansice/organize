@@ -33,8 +33,14 @@ export default class GetInput extends Component {
         const element = (
             <div>
               <form onSubmit={this.handleSubmit}>
+              <table>
+                <tr>
                   <textarea id="input_textarea" rows = "10" cols = "100"></textarea>
+                </tr>
+                <tr align="center">
                   <input type="submit" value="Submit"/>
+                </tr>
+              </table>
               </form>
             </div>
         );
