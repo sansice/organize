@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import ReactWordcloud from 'react-wordcloud';
 class WordCloud extends Component {
     render()
     {
-        let temp = '{{input}}'
-        console.log(temp)
+        let output_text = this.props.processed_text
+
+        var output_text_json = JSON.parse(output_text);
+        console.log("Greetings from wordCloud " + output_text_json)
         return(
-            <div>
-                <h2>The current time is {new Date().toLocaleTimeString()}.</h2>
+            <div style={{backgroundColor: 'white'}}>
+              <ReactWordcloud words={output_text_json} />
             </div>
        )
     }

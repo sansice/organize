@@ -1,39 +1,33 @@
 import React, { Component } from 'react';
+import Header from './Header';
+import GetInput from './GetInput';
 import WordCloud from './WordCloud';
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.set_proceesed_text = this.set_proceesed_text.bind(this);
+        this.state = {processed_text: '[{"text": "", "value": 11}]'};
+    };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    }
-
-    handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
+    set_proceesed_text(text){
+        return this.setState({processed_text : text});
     }
     render()
     {
+        let root = document.getElementById('content');
+        let url = root.getAttribute('data-url')
+        let port = root.getAttribute('data-port')
+
+        console.log(url)
+
         const element = (
             <div>
-              <WordCloud />
-              <form action="http://localhost:5000/result" method="get">
-                  <textarea rows = "20" cols = "100" name = "place">
-                  I hate google chome as the chrome is horrible at times
-                  </textarea>
-                  <input type="submit" value="Submit"/>
-              </form>
-
-
+                <Header />
+                <GetInput url={url} port={port} homeCallBack={this.set_proceesed_text} />
+                <WordCloud processed_text={this.state.processed_text} />
             </div>
         );
-
         return element
     }
 }

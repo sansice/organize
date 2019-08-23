@@ -73,10 +73,10 @@ class Tokenize(object):
             words = [word for word in words if len(word) >= self.min_word_length]
 
         word_counts, _ = self.process_tokens(words, self.normalize_plurals)
+        return self.convert_data_json(word_counts)
 
-        return word_counts
-
-    def convert_data_json(self, word_counts):
+    @staticmethod
+    def convert_data_json(word_counts):
         return_list = []
         for word in word_counts:
             text_val = {'text': word, 'value': word_counts[word]}
